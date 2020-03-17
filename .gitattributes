@@ -1,0 +1,2 @@
+.env merge=ours
+fail2ban.env merge=ours
