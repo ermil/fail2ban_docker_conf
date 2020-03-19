@@ -35,7 +35,7 @@ Afin de partager mes projets et pouvoir les réutiliser pour différents serveur
 #+begin_src
 git config [--global] merge.ours.driver true
 #+end_src
-Pour plus de détails pour que cela fonctionne bien, voir [[https://github.com/ermil/gitflow#public-repo-without-personnal-informations][mon flow git]].
+Pour plus de détails pour que cela fonctionne bien, voir [[https://github.com/ermil/gitflow#public-repo-without-personal-information][mon flow git]].
 * Documentation du fonctionnement de fail2ban
 ** Les différentes commandes disponibles
 Se référer aux [[http://www.fail2ban.org/wiki/index.php/Commands][commandes du client fail2ban]]. 

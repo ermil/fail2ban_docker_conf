@@ -1,7 +1,8 @@
 
 BACKUP_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))/../backup
 # get the current directory name (without path)
-PROJECT_NAME := $(shell basename ${PWD})
+PROJECT_NAME := $(lastword  $(subst /, , $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))))
+
 
 # ## Il est possible de changer les valeurs affectées avec ?= en les définissant autrement dans un fichier
 # ## .make.env ou par un argument passé au makefile. Pour un fichier .make.env il faudrait ajouter:
@@ -27,7 +28,7 @@ down:
 	@docker-compose -f $(DOCKER_COMPOSE_FILE) down
 
 backup:
-	tar -cJpvf $(BACKUP_DIR)/$(PROJECT_NAME)_$(TIMESTAMP)_conf.tar.xz -C $(CURDIR) data-docker data-input $(DOCKER_COMPOSE_FILE) makefile .env fail2ban.env
+	tar -cJpvf $(BACKUP_DIR)/$(PROJECT_NAME)_$(TIMESTAMP)_conf.tar.xz --exclude=**/db/* -C $(CURDIR) data-docker data-input $(DOCKER_COMPOSE_FILE) makefile .env fail2ban.env
 
 update:
 	@docker-compose -f $(DOCKER_COMPOSE_FILE) pull $(CIBLE)
